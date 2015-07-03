@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="com.kony.sdk/ns/1.0"
+    id="com.kony.sdk"
+    version="1.0.0">
+    <name>KonySDK</name>
+    <description>Kony SDK Sync Plugin</description>
+    <license>Kony 2.0</license>
+    <keywords>Kony, SDK</keywords>
+    
+    <js-module src="konylibrary.js" name="konylibrary">
+        <clobbers target="konylibrary" />
+    </js-module>
+	
+	<js-module src="kony-sdk.js" name="kony-sdk">
+        <clobbers target="konysdk" />
+    </js-module>
+    
+    <!-- ios -->
+   <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="KSyncDB">
+                <param name="ios-package" value="KSyncDB"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/DatabaseHelper.h" />
+		
+        <header-file src="src/ios/KSyncDB.h" />
+		
+        <source-file src="src/ios/KSyncDB.m" />
+		
+		<source-file src="src/ios/libkonyDBCombined.a" framework="true"/>
+		
+		<source-file src="src/ios/libsqlcipherUniversal.a" framework="true"/>
+
+
+    <js-module src="www/ios/KonyIphoneSyncPluginImpl.js" name="Impl">
+        <clobbers target="KonyIOSImpl" />
+    </js-module>
+	
+	<js-module src="www/ios/KonySyncLib.js" name="Lib">
+		<clobbers target="sync" />
+	</js-module>
+	
+      
+    </platform>
+	
+	<platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="KSyncDB">
+                <param name="android-package" value="KSyncDB"/>
+            </feature>
+        </config-file>
+	
+		<js-module src="www/android/konysyncphonegapimpl.js" name="Impl">
+		<clobbers target="KonyAndroidImpl" />
+		</js-module>
+		
+		<js-module src="www/android/KonySyncLib.js" name="Lib">
+		<clobbers target="sync" />
+		</js-module>
+		
+		<source-file src="src/android/KonyDbImplementation.jar"
+                target-dir="libs" />
+      
+    </platform>
+</plugin>

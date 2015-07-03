@@ -1,0 +1,73 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"KSyncDB\"><param name=\"android-package\" value=\"KSyncDB\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "com.kony.sdk": {
+            "PACKAGE_NAME": "com.popcorn.test"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.popcorn.test"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.popcorn.test"
+        },
+        "org.apache.cordova.geolocation": {
+            "PACKAGE_NAME": "com.popcorn.test"
+        },
+        "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "com.popcorn.test"
+        },
+        "org.apache.cordova.dialogs": {
+            "PACKAGE_NAME": "com.popcorn.test"
+        }
+    },
+    "dependent_plugins": {}
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+        <title>Kony News and Weather Demo App</title>
+        <link type="text/css" rel="stylesheet" href="dist/css/slider.css" />
+        <link type="text/css" rel="stylesheet" href="dist/css/bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="dist/css/custom.css" />
+        <script type="text/javascript" src="dist/js/jquery.min.js"></script>
+        <script type="text/javascript" src="dist/js/slider.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/home.js"></script>
+        <script src="js/config.js"></script>
+        <script type="text/javascript">
+            $(function() {
+              $('nav#menu').mmenu();
+              });
+            </script>
+    </head>
+    <body onload="init()">
+        <div class="loader_background" id="homeLoader"><img src="images/imgloader.gif" class="loader_inner"></div>
+        
+        <div id="page">
+            <div class="header fixed">
+                <a href="#menu"></a>
+                <div id="newsHeaderType">Top Stories</div>
+                
+            </div>
+            <div class="content weather">
+                <div id="localWeatherReport" class="fixed-div" style="display: none;">
+                    <div class="col-md-12">
+                        <h1 id="currentLocation" style="margin-top: 0;margin-left: 5px;">N/A</h1>
+                        <div>
+                            <div id="currentDateTime" class="current-date" style="margin-left: 5px;">N/A</div>
+                            <div class="pull-right select-view inner-view"><a class="select" id="id_fahrenheit" onclick="convertToFahrenheit(this)">F<span class="deg">o</span></a><span class="devider">|</span><a id="id_celsius" onclick="convertToCelsius(this)">C<span class="deg">o</span></a></div>
+                        </div>
+                    </div>
+                    <div class="row text-center mar-top-20 weather-graph">
+                        <div class="col-xs-3 today bdr-right">
+                            <img src="images/today-weather.png" id="id_img_today_weather"/>
+                            <h1><span id="currentTemp">N/A</span><span class="deg-big">o</span></h1>
+                        </div>
+                        <div class="col-xs-9 future-date">
+                            <div class="col-xs-3">
+                                <h2 id="day0WeekName">N/A</h2>
+                                <img src="images/fut-weather.png" id="day0WeatherImg"/>
+                                <div class="future-weather">
+                                    <div class="min">
+                                        <span id="day0MinTemp">N/A</span><span class="deg">o</span>
+                                    </div>
+                                    <div class="max">
+                                        <span id="day0MaxTemp">N/A</span><span class="deg">o</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 id="day1WeekName">N/A</h2>
+                                <img src="images/fut-weather.png" id="day1WeatherImg"/>
+                                <div class="future-weather">
+                                    <div class="min">
+                                        <span id="day1MinTemp">N/A</span><span class="deg">o</span>
+                                    </div>
+                                    <div class="max">
+                                        <span id="day1MaxTemp">N/A</span><span class="deg">o</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 id="day2WeekName">N/A</h2>
+                                <img src="images/fut-weather.png"  id="day2WeatherImg"/>
+                                <div class="future-weather">
+                                    <div class="min">
+                                        <span id="day2MinTemp">N/A</span><span class="deg">o</span>
+                                    </div>
+                                    <div class="max">
+                                        <span id="day2MaxTemp">N/A</span><span class="deg">o</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 id="day3WeekName">N/A</h2>
+                                <img src="images/fut-weather.png"  id="day3WeatherImg"/>
+                                <div class="future-weather">
+                                    <div class="min">
+                                        <span id="day3MinTemp">N/A</span><span class="deg">o</span>
+                                    </div>
+                                    <div class="max">
+                                        <span id="day3MaxTemp">N/A</span><span class="deg">o</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <h3 style="margin-bottom: 1px;">Local Stories</h3>
+                    
+                </div>
+                
+                <div class="row" id="newsListRow">
+                    <div class="col-md-12">
+                        <div class="">
+                            
+                            <ul class="media-list" id="listTopStories">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav id="menu">
+                <ul>
+                    <li class="mm-selected">
+                        <a onclick="getNewsReport('h')" href="#">Top Stories</a>
+                    </li>
+                    <li>
+                        <a onclick="getNewsReport('w')" href="#">World</a>
+                    </li>
+                    <li>
+                        <a onclick="getNewsReport('n')" href="#">U.S.</a>
+                    </li>
+                    <li>
+                        <a onclick="getNewsReport('b')" href="#">Business</a>
+                    </li>
+                    <li>
+                        <a onclick="getNewsReport('tc')" href="#">Technology</a>
+                    </li>
+                    <li>
+                        <a onclick="getNewsReport('e')" href="#">Entertainment</a>
+                    </li>
+                    <li>
+                        <a onclick="getNewsReport('s')" href="#">Sports</a>
+                    </li>
+                    <li>
+                        <a onclick="getNewsReport('snc')" href="#">Science</a>
+                    </li>
+                    <li>
+                        <a onclick="getNewsReport('m')" href="#">Health</a>
+                    </li>
+                    <li>
+                        <a onclick="getLocalNews()" href="#">Local</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </body>
+</html>

@@ -14,7 +14,7 @@ This application will showcase the easy of creating a fully functional Cordova(P
 *	Or add your AppKey, AppSecret, and the Service URL to your config.js file located in SamAppMFNewsWeather-> www->js and build your application
 
 **NOTE:** 
-You need to setup and configure your Kony MobileFabric environment on your cloud before running the app. Follow these tutorials at http://docs.kony.com/tutorials/MobileFabric/ to set up Kony MobileFabric environment.
+You need to setup and configure your Kony MobileFabric environment on your cloud before running the app.
 
 # Supported platforms:
 **Mobile**

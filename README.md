@@ -9,7 +9,7 @@ This application will showcase the easy of creating a fully functional Cordova(P
 
 *	Download the SamAppMFNewsWeather.zip file
 *	Extract the SamAppMFNewsWeather.zip into your working folder/directory
-*	Use the following document to setup your integration and orchestration services:FastTrack-1 http://docs.kony.com/mobilefabric/fasttrack/FastTrack-1%20Developing%20a%20PhoneGap%20Application%20using%20MobileFabric/
+*	Use the following document to setup your integration and orchestration services:[FastTrack-1] (http://docs.kony.com/mobilefabric/fasttrack/FastTrack-1%20Developing%20a%20PhoneGap%20Application%20using%20MobileFabric/)
 *	Use the following document to guild you through the steps used to develop the application in Cordova(PhoneGap):FastTrack-2: http://docs.kony.com/mobilefabric/fasttrack/FastTrack-2%20Developing%20the%20News%20and%20Weather%20app%20with%20MobileFabric%20Services/
 *	Or add your AppKey, AppSecret, and the Service URL to your config.js file located in SamAppMFNewsWeather-> www->js and build your application
 

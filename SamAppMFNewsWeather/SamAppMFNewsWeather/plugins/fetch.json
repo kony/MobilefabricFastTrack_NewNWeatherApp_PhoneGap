@@ -1,1 +1,24 @@
-{}
+{
+    "org.apache.cordova.dialogs": {
+        "source": {
+            "type": "local",
+            "path": "/Users/popcornapple2/.plugman/cache/org.apache.cordova.dialogs/0.3.0/package"
+        }
+    },
+    "cordova-plugin-dialogs": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-dialogs"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.kony.sdk": {
+        "source": {
+            "type": "local",
+            "path": "com.kony.sdk"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}

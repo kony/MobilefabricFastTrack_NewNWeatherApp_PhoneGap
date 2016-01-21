@@ -32,7 +32,8 @@ if (typeof(kony.crypto) === "undefined") {
 if (typeof(kony.os) === "undefined") {
 	kony.os = {};
 }
-
+kony.sync.sessionid=null;
+kony.sync.requestnumber=null;
 //array designed to hold various callbacks of transaction in a map
 kony.db.callbackMap = [];
 
@@ -155,7 +156,8 @@ kony.db.sqlResultsetRowItem = function(transactionId, resultSet, index){
 kony.net.invokeServiceAsync = function(url,inputParamTable,callback,info){
 
 	var httpheaders;
-	
+	inputParamTable["konysyncsessionid"]=kony.sync.sessionid;
+	inputParamTable["konysyncrequestnumber"]=kony.sync.requestnumber;
 	if(typeof(inputParamTable.httpheaders) !== 'undefined' && inputParamTable.httpheaders !== null){
       httpheaders = inputParamTable.httpheaders;
 	}
@@ -194,8 +196,9 @@ kony.net.networkHelper = function (requestType, url, params, headers, successCal
 			if(res.target.response !== ""){
 				try{
 					resultTable = JSON.parse(res.target.response);
-
-				}
+					kony.sync.sessionid =resultTable.d.__session.id;
+                    kony.sync.requestnumber=resultTable.d.__session.requestnumber;
+                }
 				catch(e){
 					resultTable.errormsg = res.target.responseText;
 				}

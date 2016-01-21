@@ -1,8 +1,11 @@
 var konyObject;
 function init() {
+	console.log('#@ in init function');
 	try {
         konyObject = new kony.sdk();
+		console.log('#@ konyObject is defined');
         konyObject.init(configObject.keys.APP_KEY,configObject.keys.APP_SECRET,configObject.keys.SERVICE_URL,initSuccessCallback, initErrorCallback);
+		console.log('#@ konyObject is initialized');
 	} catch(e) {
 		console.log("Error in homeInit :" + e);
 	}

@@ -67,6 +67,7 @@ function getNewsReport(type) {
 		};
 
 		var headers = {};
+		//debugger;
 		integrationObj.invokeOperation(operationName, headers, data, homeServiceSuccessCallback, homeServiceFailureCallback);
 
 	} catch(e) {
@@ -222,7 +223,7 @@ function localNewsSuccessCallback(result) {
 		$("#listTopStories").append(topStories);
 		try {
             var location="";
-            location=result.city+", "+result.cityName+", "+result.state;
+            location=result.city;
             location = location.replace(/(^\s*,)|(,\s*$)/g, '');
             location = location.replace(/(^\s*,)|(,\s*$)/g, '');
             if(location!=null&&location!=""){
@@ -230,10 +231,12 @@ function localNewsSuccessCallback(result) {
             }
             
 			if(result.temp!=null&&result.temp!="")
-			$("#currentTemp").text(result.temp);
+				$("#currentTemp").text(result.temp);
             
 			var myDays=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+			var myDayNumbers = ["day1", "day2", "day3", "day4", "day4", "day5", "day6", "day7"];
 			var dayNames=["SUN","MON","TUE","WED","THU","FRI","SAT","SUN","MON","TUE","WED","THU","FRI","SAT"];
+
 			var today=new Date();
 			var day=today.getDay();
 			var time=today.getHours();
@@ -249,7 +252,13 @@ function localNewsSuccessCallback(result) {
 			$("#day1WeekName").text(dayNames[day+2]);
 			$("#day2WeekName").text(dayNames[day+3]);
 			$("#day3WeekName").text(dayNames[day+4]);
-			
+
+			//Studio - code
+			//minTemp=((day["temp"]["min"]-273.5).toFixed(2))+"°C";
+			//maxTemp=((day["temp"]["max"]-273.5).toFixed(2))+"°C";
+			//imgUrl="http://openweathermap.org/img/w/"+day["weather"][0]["icon"]+".png";
+
+
 			if (result.ForecastList != null) {
 				for (var i = 0; i < 4; i++) {
 					try {
@@ -261,6 +270,32 @@ function localNewsSuccessCallback(result) {
 					}
 				}
 			}
+
+			/*
+			//if (result.myDayNumbers[i] != null) {
+			for (var i = -1; i < 4; i++) {
+
+				var dayWeather = result[myDayNumbers[i+1]];
+				var dayWeatherParsed = JSON.parse(dayWeather);
+				if (dayWeatherParsed.temp != null && dayWeatherParsed.weather != null) {
+					if(i == -1) {
+						$("#currentTemp").text((dayWeatherParsed.temp.min - 273.15).toFixed(2));
+						$("#id_img_today_weather").attr('src', getWeatherImageURL(dayWeatherParsed.weather[0].icon));
+
+					} else {
+						try {
+							$("#day" + i + "MinTemp").text((dayWeatherParsed.temp.min - 273.15).toFixed(2));
+							$("#day" + i + "MaxTemp").text((dayWeatherParsed.temp.max - 273.15).toFixed(2));
+							$("#day" + i + "WeatherImg").attr('src', getWeatherImageURL(dayWeatherParsed.weather[0].icon));
+						} catch (e) {
+							console.log("Error in populating weather :" + e);
+						}
+					}
+				} else {
+					console.log('The Weather is empty');
+				}
+			} */
+
 		} catch(e) {
 			console.log("Error in populating weather :" + e);
 		}
@@ -270,6 +305,10 @@ console.log("Error in populating weather :" + e);
 	} finally {
 		$("#homeLoader").css("display", "none");
 	}
+}
+
+function getWeatherImageURL (icon) {
+	return 'http://openweathermap.org/img/w/'+icon+'.png';
 }
 
 function getWeatherImage (desc) {
@@ -322,6 +361,10 @@ function convertToFahrenheit (obj) {
   		var maxTemp,minTemp;
   		maxTemp=$("#day"+i+"MinTemp").text();
   		minTemp=$("#day"+i+"MaxTemp").text();
+		//Studio - Code
+		//minTemp=((day["temp"]["min"]-273.5).toFixed(2))+"°C";
+		//maxTemp=((day["temp"]["max"]-273.5).toFixed(2))+"°C";
+		//imgUrl="http://openweathermap.org/img/w/"+day["weather"][0]["icon"]+".png";
         if(maxTemp!="N/A")
   		$("#day"+i+"MinTemp").text(Math.round(minTemp* 9 / 5 + 32));
         if(minTemp!="N/A")

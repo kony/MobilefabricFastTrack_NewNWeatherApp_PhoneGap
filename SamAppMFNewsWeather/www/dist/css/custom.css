@@ -490,7 +490,7 @@ label i:before {
 }
 .fixed-div{ position:fixed; margin-top:-10px; padding-top:10px; z-index:999; background:#fff; width:97%;left: 0;
     padding-left: 2%;}
-.mar-top-250{ margin-top:190px;}
+.mar-top-250{ margin-top:200px;}
 
 .current-date{
     width:70%;
